@@ -22,6 +22,16 @@ Choices have been made for default values in templates JSON files and in the fol
 
 ## Demonstration
 
+### Domain suffix
+
+Exposed route in Openshift Online have a structure:
+name.suffix.zone.openshiftapps.com
+- name depends on your application and is configurable per application
+- suffix is linked to your account, it is a short identifier (so far, the best to find is to deploy an http server and look at its public URL)
+- zone, depends on the location your account (pro-eu-west-1)
+
+This documentation needs that you adjust suffix from time to time.
+
 ### Create RH-SSO server
 
 On Windows, run Powershell as administrator.
@@ -110,13 +120,13 @@ The following default values must be changed:
 - Custom http Route Hostname, you must change "suffix" to your domain suffix
 - Custom https Route Hostname, you must change "suffix" to your domain suffix
 - URL for SSO, you must change "suffix" to your domain suffix
-- SSO Public Key, to be copied from RH-SSO demo Realm Keys (Public Key). Go to https://secure-sso-demo-rhsso.<suffix>.pro-eu-west-1.openshiftapps.com/auth/ in the Realm Demo, Realm settings, Keys, and copied the rsa-generated public key.
+- SSO Public Key, to be copied from RH-SSO demo Realm Keys (Public Key). Go to https://secure-sso-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com/auth/ (adjust suffix according to your account) in the Realm Demo, Realm settings, Keys, and copied the rsa-generated public key.
 
 After this, you need to create a role "user" and a "user" into the realm demo.
 You also have to map the role to the user.
 
-And you can try to contact the URL:
-https://secure-eap-app-demo-rhsso.<suffix>.pro-eu-west-1.openshiftapps.com/rest/hello
+And you can try to contact the URL: (adjust suffix according to your account) 
+https://secure-eap-app-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com/rest/hello
 
 You're likely to be prompted for untrusted CA because we generated ourselves (twice, first for secure-eap then for secure-sso).
 
