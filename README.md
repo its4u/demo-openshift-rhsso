@@ -112,6 +112,13 @@ The following default values must be changed:
 - URL for SSO, you must change "suffix" to your domain suffix
 - SSO Public Key, to be copied from RH-SSO demo Realm Keys (Public Key). Go to https://secure-sso-demo-rhsso.<suffix>.pro-eu-west-1.openshiftapps.com/auth/ in the Realm Demo, Realm settings, Keys, and copied the rsa-generated public key.
 
+After this, you need to create a role "user" and a "user" into the realm demo.
+You also have to map the role to the user.
+
+And you can try to contact the URL:
+https://secure-eap-app-demo-rhsso.<suffix>.pro-eu-west-1.openshiftapps.com/rest/hello
+
+You're likely to be prompted for untrusted CA because we generated ourselves (twice, first for secure-eap then for secure-sso).
 
 ## References
 
