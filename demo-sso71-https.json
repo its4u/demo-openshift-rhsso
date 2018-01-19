@@ -410,6 +410,11 @@
                                         "protocol": "TCP"
                                     }
                                 ],
+								"resources": {
+									"limits": {
+										"memory": "768Mi"
+									}
+								},
                                 "env": [
                                     {
                                         "name": "DB_MIN_POOL_SIZE",

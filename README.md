@@ -18,7 +18,7 @@ Git clone this project to a local folder
 
 The following demonstration is intended for demonstrate purpose only.
 It uses dummy passwords and self-signed certificates you don't want for anything other than a demonstration.
-Choices have been made for default values in templates JSON files and in the following commands so they match. There are more advanced way to deal with those values but again the purpose is to demonstrate installation to an audience.
+Choices have been made for default values in templates JSON files and in the following commands so they match. There are more advanced ways to deal with those values but again the purpose here is to demonstrate installation to an audience.
 
 ## Demonstration
 
@@ -113,6 +113,9 @@ The following default values must be changed:
 
 Original templates come from:
 https://github.com/jboss-openshift/application-templates/blob/ose-v1.3.7/jboss-image-streams.json
+
 https://github.com/jboss-openshift/application-templates/blob/ose-v1.3.7/sso/sso71-https.json
+
 https://github.com/jboss-openshift/application-templates/blob/ose-v1.3.7/eap/eap70-sso-s2i.json
+
 
