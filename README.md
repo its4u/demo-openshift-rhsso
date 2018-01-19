@@ -10,6 +10,7 @@ In order to run the demonstration you need:
 if your locale is not en)
 - The OpenShift command line tool "oc". See command line tools documentation of your OpenShift Online account
 - OpenSSL installed and in your PATH
+- Java keytool in your PATH
 
 Git clone this project to a local folder
 
