@@ -72,7 +72,7 @@ The default values should be okay.
 $domainsuffix = "e4ff"
 oc create -n demo-rhsso -f demo-eap70-sso-s2i.json
 
-keytool -genkeypair -alias https -keyalg RSA -keystore eap-https.jks --dname "CN=secure-eap-app-demo-rhsso.e4ff.pro-eu-west-1.openshiftapps.com" -storepass password -keypass password
+keytool -genkeypair -alias https -keyalg RSA -keystore eap-https.jks --dname "CN=secure-eap-app-demo-rhsso.$domainsuffix.pro-eu-west-1.openshiftapps.com" -storepass password -keypass password
  
 keytool -certreq -keyalg rsa -alias https -keystore eap-https.jks -file eap-https.csr -storepass password
  
@@ -98,15 +98,19 @@ oc secret new eap-saml-secret eap-saml.jks -n demo-rhsso
  
 oc secret new eap-truststore-secret eap-truststore.jks -n demo-rhsso
 
-oc policy add-role-to-user view system:serviceaccount:demo-rhsso:eap-app-service-account
+oc create serviceaccount eap-service-account -n demo-rhsso
 
-oc secrets link eap-app-service-account eap-https-secret eap-jgroups-secret eap-saml-secret eap-truststore-secret
+oc policy add-role-to-user view system:serviceaccount:demo-rhsso:eap-service-account
+
+oc secrets link eap-service-account eap-https-secret eap-jgroups-secret eap-saml-secret eap-truststore-secret
 ```
 
-Under the OpenShift Online console, you can then add to project an RH-SSO server.
+Under the OpenShift Online console, you can then add to project an "Red Hat JBoss EAP 7.0 + Single Sign-On (with https)".
 The following default values must be changed:
-- URL for SSO, you must change "suffix" to your suffix
-- SSO Public Key, to be copied from RH-SSO demo Realm Keys (Public Key)
+- Custom http Route Hostname, you must change "suffix" to your domain suffix
+- Custom https Route Hostname, you must change "suffix" to your domain suffix
+- URL for SSO, you must change "suffix" to your domain suffix
+- SSO Public Key, to be copied from RH-SSO demo Realm Keys (Public Key). Go to https://secure-sso-demo-rhsso.<suffix>.pro-eu-west-1.openshiftapps.com/auth/ in the Realm Demo, Realm settings, Keys, and copied the rsa-generated public key.
 
 
 ## References

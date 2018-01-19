@@ -26,16 +26,16 @@
         },
         {
             "displayName": "Custom http Route Hostname",
-            "description": "Hostname for http service route (e.g. eap-app-myproject.example.com).  Required for SSO-enabled applications.  This is added to the white list of redirects in the SSO server.",
+            "description": "Hostname for http service route (e.g. eap-app-myproject.example.com).  Required for SSO-enabled applications.  This is added to the white list of redirects in the SSO server. Change suffix here !",
             "name": "HOSTNAME_HTTP",
-            "value": "",
+            "value": "eap-app-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com",
             "required": true
         },
         {
             "displayName": "Custom https Route Hostname",
-            "description": "Hostname for https service route (e.g. secure-eap-app-myproject.example.com).  Required for SSO-enabled applications.  This is added to the white list of redirects in the SSO server.",
+            "description": "Hostname for https service route (e.g. secure-eap-app-myproject.example.com).  Required for SSO-enabled applications.  This is added to the white list of redirects in the SSO server. Change suffix here !",
             "name": "HOSTNAME_HTTPS",
-            "value": "",
+            "value": "secure-eap-app-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com",
             "required": true
         },
         {
@@ -191,7 +191,7 @@
         },
         {
             "displayName": "URL for SSO",
-            "description": "The URL for the SSO server (e.g. https://secure-sso-myproject.example.com/auth).  This is the URL through which the user will be redirected when a login or token is required by the application. Change Suffix Here !!!",
+            "description": "The URL for the SSO server (e.g. https://secure-sso-myproject.example.com/auth).  This is the URL through which the user will be redirected when a login or token is required by the application. Change Suffix Here !",
             "name": "SSO_URL",
             "value": "https://secure-sso-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com/auth",
             "required": true
