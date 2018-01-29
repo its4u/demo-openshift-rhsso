@@ -21,28 +21,28 @@
             "displayName": "Application Name",
             "description": "The name for the application.",
             "name": "APPLICATION_NAME",
-            "value": "eap-app",
+            "value": "movies-backend",
             "required": true
         },
         {
             "displayName": "Custom http Route Hostname",
             "description": "Hostname for http service route (e.g. eap-app-myproject.example.com).  Required for SSO-enabled applications.  This is added to the white list of redirects in the SSO server. Change suffix here !",
             "name": "HOSTNAME_HTTP",
-            "value": "eap-app-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com",
+            "value": "movies-backend-demo-rhsso.e4ff.pro-eu-west-1.openshiftapps.com",
             "required": true
         },
         {
             "displayName": "Custom https Route Hostname",
             "description": "Hostname for https service route (e.g. secure-eap-app-myproject.example.com).  Required for SSO-enabled applications.  This is added to the white list of redirects in the SSO server. Change suffix here !",
             "name": "HOSTNAME_HTTPS",
-            "value": "secure-eap-app-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com",
+            "value": "secure-movies-backend-demo-rhsso.e4ff.pro-eu-west-1.openshiftapps.com",
             "required": true
         },
         {
             "displayName": "Git Repository URL",
             "description": "Git source URI for application",
             "name": "SOURCE_REPOSITORY_URL",
-            "value": "https://github.com/its4u/rest-api",
+            "value": "https://github.com/its4u/demo-openshift-sso-springboot.git",
             "required": true
         },
         {
@@ -193,7 +193,7 @@
             "displayName": "URL for SSO",
             "description": "The URL for the SSO server (e.g. https://secure-sso-myproject.example.com/auth).  This is the URL through which the user will be redirected when a login or token is required by the application. Change Suffix Here !",
             "name": "SSO_URL",
-            "value": "https://secure-sso-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com/auth",
+            "value": "https://secure-sso-demo-rhsso.e4ff.pro-eu-west-1.openshiftapps.com/auth",
             "required": true
         },
         {
@@ -235,7 +235,7 @@
             "displayName": "SSO Bearer Only?",
             "description": "SSO Client Access Type",
             "name": "SSO_BEARER_ONLY",
-            "value": "",
+            "value": "true",
             "required": false
         },
         {
@@ -285,7 +285,7 @@
             "displayName": "Enable CORS for SSO?",
             "description": "Enable CORS for SSO applications",
             "name": "SSO_ENABLE_CORS",
-            "value": "false",
+            "value": "true",
             "required": false
         },
         {
@@ -618,6 +618,11 @@
                                         "protocol": "TCP"
                                     }
                                 ],
+								"resources": {
+									"limits": {
+										"memory": "768Mi"
+									}
+								},
                                 "env": [
                                     {
                                         "name": "OPENSHIFT_KUBE_PING_LABELS",
