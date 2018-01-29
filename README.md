@@ -122,13 +122,21 @@ The following default values must be changed:
 - URL for SSO, you must change "suffix" to your domain suffix
 - SSO Public Key, to be copied from RH-SSO demo Realm Keys (Public Key). Go to https://secure-sso-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com/auth/ (adjust suffix according to your account) in the Realm Demo, Realm settings, Keys, and copied the rsa-generated public key.
 
-After this, you need to create a role "user" and a "user" into the realm demo.
+After this, you need to create a role "demo" and an user into the realm demo.
 You also have to map the role to the user.
 
 And you can try to contact the URL: (adjust suffix according to your account) 
 https://secure-eap-app-demo-rhsso.suffix.pro-eu-west-1.openshiftapps.com/rest/hello
 
 You're likely to be prompted for untrusted CA because we generated ourselves (twice, first for secure-eap then for secure-sso).
+
+### Create NodeJS Server
+
+```
+oc create -n demo-rhsso -f demo-nodejs6-s2i-https.json
+```
+
+Under the OpenShift Online console, you can then add to project an "Node.js".
 
 ## References
 
@@ -139,4 +147,4 @@ https://github.com/jboss-openshift/application-templates/blob/ose-v1.3.7/sso/sso
 
 https://github.com/jboss-openshift/application-templates/blob/ose-v1.3.7/eap/eap70-sso-s2i.json
 
-
+https://github.com/openshift/nodejs-ex/blob/master/openshift/templates/nodejs.json
