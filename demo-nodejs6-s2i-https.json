@@ -15,7 +15,7 @@
             "template.openshift.io/bindable": "false"
         }
     },
-    "message": "The following service(s) have been created in your project: ${NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/nodejs-ex/blob/master/README.md.",
+    "message": "The following service(s) have been created in your project: ${APPLICATION_NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/nodejs-ex/blob/master/README.md.",
     "labels": {
         "template": "nodejs-example",
         "app": "nodejs-example"
@@ -25,7 +25,7 @@
             "kind": "Service",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${NAME}",
+                "name": "${APPLICATION_NAME}",
                 "annotations": {
                     "description": "Exposes and load balances the application pods"
                 }
@@ -39,18 +39,18 @@
                     }
                 ],
                 "selector": {
-                    "name": "${NAME}"
+                    "name": "${APPLICATION_NAME}"
                 }
             }
         },
         {
             "kind": "Route",
             "apiVersion": "v1",
-            "id": "${NAME}-https",
+            "id": "${APPLICATION_NAME}-https",
             "metadata": {
-                "name": "${NAME}",
+                "name": "${APPLICATION_NAME}",
                 "labels": {
-                    "application": "${NAME}"
+                    "application": "${APPLICATION_NAME}"
                 },
                 "annotations": {
                     "description": "Route for application's https service."
@@ -60,7 +60,7 @@
                 "host": "${APPLICATION_DOMAIN}",
                 "to": {
                     "kind": "Service",
-                    "name": "${NAME}"
+                    "name": "${APPLICATION_NAME}"
                 },
                 "tls": {
                     "termination": "passthrough",
@@ -72,7 +72,7 @@
             "kind": "ImageStream",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${NAME}",
+                "name": "${APPLICATION_NAME}",
                 "annotations": {
                     "description": "Keeps track of changes in the application image"
                 }
@@ -82,7 +82,7 @@
             "kind": "BuildConfig",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${NAME}",
+                "name": "${APPLICATION_NAME}",
                 "annotations": {
                     "description": "Defines how to build the application",
                     "template.alpha.openshift.io/wait-for-ready": "true"
@@ -121,7 +121,7 @@
                 "output": {
                     "to": {
                         "kind": "ImageStreamTag",
-                        "name": "${NAME}:latest"
+                        "name": "${APPLICATION_NAME}:latest"
                     }
                 },
                 "triggers": [
@@ -153,7 +153,7 @@
             "kind": "DeploymentConfig",
             "apiVersion": "v1",
             "metadata": {
-                "name": "${NAME}",
+                "name": "${APPLICATION_NAME}",
                 "annotations": {
                     "description": "Defines how to deploy the application server",
                     "template.alpha.openshift.io/wait-for-ready": "true"
@@ -169,11 +169,11 @@
                         "imageChangeParams": {
                             "automatic": true,
                             "containerNames": [
-                                "nodejs-example"
+                                "${APPLICATION_NAME}"
                             ],
                             "from": {
                                 "kind": "ImageStreamTag",
-                                "name": "${NAME}:latest"
+                                "name": "${APPLICATION_NAME}:latest"
                             }
                         }
                     },
@@ -183,19 +183,19 @@
                 ],
                 "replicas": 1,
                 "selector": {
-                    "name": "${NAME}"
+                    "name": "${APPLICATION_NAME}"
                 },
                 "template": {
                     "metadata": {
-                        "name": "${NAME}",
+                        "name": "${APPLICATION_NAME}",
                         "labels": {
-                            "name": "${NAME}"
+                            "name": "${APPLICATION_NAME}"
                         }
                     },
                     "spec": {
                         "containers": [
                             {
-                                "name": "nodejs-example",
+                                "name": "${APPLICATION_NAME}",
                                 "image": " ",
                                 "ports": [
                                     {
@@ -233,7 +233,7 @@
     ],
     "parameters": [
         {
-            "name": "NAME",
+            "name": "APPLICATION_NAME",
             "displayName": "Name",
             "description": "The name assigned to all of the frontend objects defined in this template.",
             "required": true,
