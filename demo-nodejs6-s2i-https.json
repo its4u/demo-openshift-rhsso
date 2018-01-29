@@ -63,7 +63,7 @@
                     "name": "${APPLICATION_NAME}"
                 },
                 "tls": {
-                    "termination": "passthrough",
+                    "termination": "edge",
                     "insecureEdgeTerminationPolicy": "Redirect"
                 }
             }
