@@ -4,7 +4,7 @@
     "metadata": {
         "annotations": {
             "iconClass": "icon-jboss",
-            "description": "Application template for EAP 6 applications built using S2I, enabled for SSO.",
+            "description": "ITS4U Demonstration template for API JEE backend on EAP 7 using S2I, enabled for RH-SSO. Forked from https://github.com/jboss-openshift/application-templates/blob/ose-v1.3.7/eap/eap70-sso-s2i.json",
             "tags": "eap,javaee,java,jboss,xpaas,sso,keycloak",
             "version": "1.3.2",
             "openshift.io/display-name": "Red Hat JBoss EAP 7.0 + Single Sign-On (with https)"
